@@ -1,28 +1,29 @@
-import { Todo } from './todo.js';
+import { Project } from './project.js';
+import {Todo} from './todo.js'
 
-const priorityWeights = {
-    high: 3,
-    medium: 2,
-    low: 1
-};
+export let projects = [new Project('Default')]; 
+export let activeProject = projects[0];
 
-export let todoList = [];
-
-export function addTask(title, description, dueDate, priority) {
-    const newTask = new Todo(title, description, dueDate, priority);
-    todoList.push(newTask);
-    return newTask;
+export function createProject(name) {
+    const newProject = new Project(name);
+    projects.push(newProject);
+    return newProject;
 }
 
-export function deleteTask(id) {
-    todoList = todoList.filter(task => task.id !== id);
+export function setActiveProject(projectId) {
+    activeProject = projects.find(p => p.id === projectId);
 }
 
-export function getTaskById(id) {
-    return todoList.find(task => task.id === id);
+export function addTaskToActive(title, date, priority) { 
+    const newTask = new Todo(title, "No description", date, priority);
+    activeProject.addTask(newTask);
+}
+
+export function deleteTodoFromActive(id) {
+    activeProject.removeTask(id);
 }
 
 export function sortByPriority() {
-    // Sorts the array in place: High (3) to Low (1)
-    todoList.sort((a, b) => priorityWeights[b.priority] - priorityWeights[a.priority]);
+    const weights = { high: 3, medium: 2, low: 1 };
+    activeProject.tasks.sort((a, b) => weights[b.priority] - weights[a.priority]);
 }

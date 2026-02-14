@@ -6,33 +6,30 @@
     <title>Modern To-Do List</title>
 </head>
 <body>
-    <div class="app-container">
-       <header>
-            <h1>My Tasks</h1>
-            <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
-        </header>
+<div class="layout">
+    <aside>
+        <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+        
+        <h3>Projects</h3>
+        <div id="project-list"></div>
+        <button id="add-project-btn">+ New Project</button>
+    </aside>
 
-        <section class="form-section">
-            <form id="todo-form">
-                <input type="text" id="title" placeholder="What needs to be done?" required>
-                <input type="date" id="date" required>
-                <select id="priority">
-                    <option value="low">Low Priority</option>
-                    <option value="medium" selected>Medium Priority</option>
-                    <option value="high">High Priority</option>
-                </select>
-                <button type="submit" id="add-btn">Add Task</button>
-            </form>
-        </section>
-
-        <section class="list-section">
-            <div class="controls">
-                <button id="sort-priority-btn" class="secondary-btn">🔼 Sort by Priority</button>
-            </div>
-            <div id="todo-container">
-            
-            </div>
-        </section>
-    </div>
+    <main>
+        <h1 id="current-project-title">Default</h1>
+        <form id="todo-form">
+            <input type="text" id="title" placeholder="Task Title" required>
+            <input type="date" id="date" required>
+            <select id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <button id="sort-priority-btn">Sort by Priority</button>
+        <div id="todo-container"></div>
+    </main>
+</div>
 </body>
 </html>

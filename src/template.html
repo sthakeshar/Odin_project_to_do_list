@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To do list</title>
+    <title>Modern To-Do List</title>
 </head>
 <body>
-    <aside id="sidebar">
-        <h2>My Projects</h2>
-        
-    </aside>
-    <main>
+    <div class="app-container">
+       <header>
+            <h1>My Tasks</h1>
+            <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+        </header>
 
-    </main>
+        <section class="form-section">
+            <form id="todo-form">
+                <input type="text" id="title" placeholder="What needs to be done?" required>
+                <input type="date" id="date" required>
+                <select id="priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <button type="submit" id="add-btn">Add Task</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <div class="controls">
+                <button id="sort-priority-btn" class="secondary-btn">🔼 Sort by Priority</button>
+            </div>
+            <div id="todo-container">
+            
+            </div>
+        </section>
+    </div>
 </body>
 </html>

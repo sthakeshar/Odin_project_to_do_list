@@ -1,5 +1,5 @@
-import { Project } from './Project.js';
-import { Todo } from './Todo.js';
+import { Project } from '../model/project.js';
+import { Todo } from '../model/todo.js';
 
 export let projects = [];
 
@@ -48,4 +48,31 @@ export function sortByPriority() {
     const weights = { high: 3, medium: 2, low: 1 };
     activeProject.tasks.sort((a, b) => weights[b.priority] - weights[a.priority]);
     saveToLocalStorage();
+}
+
+export function deleteProject(projectId) {
+    // Don't allow deleting the last project
+    if (projects.length <= 1) {
+        alert("You must have at least one project!");
+        return;
+    }
+
+    // Filter out the project
+    projects = projects.filter(p => p.id !== projectId);
+
+    // If we deleted the project we were currently looking at,
+    // set the active project to the first one available
+    if (activeProject.id === projectId) {
+        activeProject = projects[0];
+    }
+
+    saveToLocalStorage();
+}
+
+export function renameProject(projectId, newName) {
+    const project = projects.find(p => p.id === projectId);
+    if (project) {
+        project.name = newName;
+        saveToLocalStorage();
+    }
 }

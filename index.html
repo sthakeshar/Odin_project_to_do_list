@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do List</title>
+<script defer src="main.js"></script></head>
+<body>
+<div class="layout">
+    <aside>
+        <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+        
+        <h3>Projects</h3>
+        <div id="project-list"></div>
+        <button id="add-project-btn">+ New Project</button>
+    </aside>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="task-search" placeholder="Search tasks in this project...">
+        </div>
+        <h1 id="current-project-title">Default</h1>
+        <form id="todo-form">
+            <input type="text" id="title" placeholder="Task Title" required>
+            <input type="date" id="date" required>
+            <select id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <button id="sort-priority-btn">Sort by Priority</button>
+        <div id="todo-container"></div>
+    </main>
+</div>
+</body>
+</html>
